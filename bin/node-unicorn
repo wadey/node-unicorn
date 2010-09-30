@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+var sys = require('sys')
+
+var args = process.argv.slice(2);
+
+var usage = ""
+    + "Usage: node-unicorn [OPTIONS] SERVER.JS\n"
+    + "\n"
+    + "Options:\n"
+    + "  -p INT, --port INT\n"
+    + "         The port to bind to on 0.0.0.0. [8000]\n" // TODO: allow users to specify full socket instead
+    + "  -w INT, --workers INT\n"
+    + "         The number of worker processes for handling requests. [1]";
+
+var count = 1,
+    port = 8000,
+    file;
+while (args.length) {
+  var arg = args.shift();
+  switch (arg) {
+    case '-h':
+      case '--help':
+        sys.puts(usage);
+        process.exit(1);
+        break;
+      case '-p':
+      case '--port':
+        var str = args.shift();
+        if (str) {
+          port = Number(str);
+        } else {
+          sys.error('-p, --port requires an argument.');
+          process.exit(1);
+        }
+        break;
+      case '-w':
+      case '--workers':
+        var str = args.shift();
+        if (str) {
+          count = Number(str);
+        } else {
+          sys.error('-w, --workers requires an argument.');
+          process.exit(1);
+        }
+        break;
+      default:
+        if (file === undefined) {
+          file = arg;
+        } else {
+          sys.puts(usage);
+          process.exit(1);
+        }
+    }
+}
+
+if (file === undefined) {
+  sys.puts(usage);
+  process.exit(1);
+}
+
+require('unicorn').start(file, port, count);

@@ -1,0 +1,9 @@
+{
+  "name": "unicorn",
+  "description": "node-unicorn",
+  "version": "0.0.1",
+  "author": "Wade Simmons <wade@wades.im>",
+  "main": "./lib/unicorn.js",
+  "bin": { "node-unicorn": "./bin/node-unicorn" },
+  "engines": { "node": ">= 0.2.1" }
+}
