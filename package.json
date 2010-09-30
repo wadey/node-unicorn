@@ -5,5 +5,8 @@
   "author": "Wade Simmons <wade@wades.im>",
   "main": "./lib/unicorn.js",
   "bin": { "node-unicorn": "./bin/node-unicorn" },
-  "engines": { "node": ">= 0.2.1" }
+  "engines": { "node": ">= 0.2.1" },
+  "dependencies": {
+    "webworker": ">=0.8.2"
+  }
 }
