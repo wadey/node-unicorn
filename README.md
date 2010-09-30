@@ -3,7 +3,7 @@
 A Unicorn-like server for nodejs. Uses [Web Workers](http://github.com/pgriess/node-webworker)
 (thanks to Peter Griess) instead of preforking.
 
-NOTE: This is just the start of a work in progress. It is currently useable,
+NOTE: This is just the start of a work in progress. It is currently usable,
 but is lacking cool things like relaunching workers on SIG USR2 and killing
 workers that are no longer responding.
 
